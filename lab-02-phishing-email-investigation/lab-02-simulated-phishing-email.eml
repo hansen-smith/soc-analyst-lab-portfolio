@@ -1,0 +1,52 @@
+From: "Microsoft Security Team" <security-alert@micros0ft-support.example>
+Reply-To: recovery-team@outlook-security.example
+To: hansen.analyst@example.com
+Date: Wed, 15 Jul 2026 09:14:22 -0400
+Subject: URGENT: Unusual sign-in detected - verify within 30 minutes
+Message-ID: <20260715131422.3847@mailer.micros0ft-support.example>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="----=_Part_3847_20260715"
+Received: from mail.micros0ft-support.example (unknown [203.0.113.45])
+    by mx.example.com with ESMTPS id 91AF2C4
+    for <hansen.analyst@example.com>;
+    Wed, 15 Jul 2026 09:14:27 -0400
+Authentication-Results: mx.example.com;
+    spf=fail (sender IP is 203.0.113.45) smtp.mailfrom=micros0ft-support.example;
+    dkim=none (message not signed);
+    dmarc=fail action=quarantine header.from=micros0ft-support.example
+X-Originating-IP: [203.0.113.45]
+X-Mailer: PHPMailer 6.9.1
+
+------=_Part_3847_20260715
+Content-Type: text/plain; charset="UTF-8"
+
+Microsoft account alert
+
+We detected an unusual sign-in to your Microsoft account from a new device.
+To prevent suspension, verify your identity within 30 minutes:
+
+https://secure-login.example.com/session/verify?id=784392
+
+If you do not verify, your account access may be restricted.
+
+Microsoft Security Team
+
+------=_Part_3847_20260715
+Content-Type: text/html; charset="UTF-8"
+
+<html>
+  <body>
+    <h2>Microsoft account alert</h2>
+    <p>We detected an unusual sign-in to your Microsoft account from a new device.</p>
+    <p>To prevent suspension, verify your identity within <strong>30 minutes</strong>:</p>
+    <p>
+      <a href="https://secure-login.example.com/session/verify?id=784392">
+        https://account.microsoft.com/security
+      </a>
+    </p>
+    <p>If you do not verify, your account access may be restricted.</p>
+    <p>Microsoft Security Team</p>
+  </body>
+</html>
+
+------=_Part_3847_20260715--
