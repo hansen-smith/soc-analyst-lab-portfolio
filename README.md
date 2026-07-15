@@ -39,8 +39,8 @@ My goal is to demonstrate that I can investigate security activity, document fin
 | Lab | Topic | Status |
 |---|---|---|
 | [Lab 01](lab-01-splunk-windows-log-analysis/README.md) | Splunk Windows Log Analysis | **Completed** |
-| [Lab 02](lab-02-phishing-email-investigation/README.md) | Phishing Email Investigation | **In Progress** |
-| Lab 03 | PowerShell Security Automation | Planned |
+| [Lab 02](lab-02-phishing-email-investigation/README.md) | Phishing Email Investigation | **Completed** |
+| [Lab 03](lab-03-powershell-security-automation/README.md) | PowerShell Security Automation | **Completed** |
 | Lab 04 | Python Alert Triage Automation | Planned |
 | Lab 05 | Microsoft Sentinel Incident Triage | Planned |
 | Lab 06 | Vulnerability Management Report | Planned |
