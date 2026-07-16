@@ -1,0 +1,46 @@
+// Safe synthetic authentication data for Lab 05
+
+let SimulatedSignInLogs = datatable(
+    UserPrincipalName:string,
+    IPAddress:string,
+    Result:string,
+    Location:string,
+    Device:string,
+    AttemptOffsetMinutes:int
+)
+[
+    "alex.johnson@contoso.com", "198.51.100.24", "Failure", "Philadelphia, US", "Windows 11", 7,
+    "alex.johnson@contoso.com", "198.51.100.24", "Failure", "Philadelphia, US", "Windows 11", 6,
+    "alex.johnson@contoso.com", "198.51.100.24", "Failure", "Philadelphia, US", "Windows 11", 5,
+    "alex.johnson@contoso.com", "198.51.100.24", "Failure", "Philadelphia, US", "Windows 11", 4,
+    "alex.johnson@contoso.com", "198.51.100.24", "Failure", "Philadelphia, US", "Windows 11", 3,
+    "alex.johnson@contoso.com", "198.51.100.24", "Failure", "Philadelphia, US", "Windows 11", 2,
+    "alex.johnson@contoso.com", "198.51.100.24", "Success", "Philadelphia, US", "Windows 11", 1,
+    "jamie.lee@contoso.com", "192.0.2.55", "Failure", "New York, US", "macOS", 3
+];
+
+SimulatedSignInLogs
+| extend TimeGenerated = now() - (AttemptOffsetMinutes * 1m)
+| summarize
+    FailedAttempts = countif(Result == "Failure"),
+    SuccessfulLogins = countif(Result == "Success"),
+    FirstSeen = min(TimeGenerated),
+    LastSeen = max(TimeGenerated),
+    Locations = make_set(Location),
+    Devices = make_set(Device)
+    by UserPrincipalName, IPAddress
+| where FailedAttempts >= 5 and SuccessfulLogins >= 1
+| extend
+    TimeGenerated = LastSeen,
+    AlertReason = "Five or more failed sign-ins followed by a successful sign-in"
+| project
+    TimeGenerated,
+    UserPrincipalName,
+    IPAddress,
+    FailedAttempts,
+    SuccessfulLogins,
+    FirstSeen,
+    LastSeen,
+    Locations,
+    Devices,
+    AlertReason
